@@ -75,6 +75,15 @@ class ShortUrlController extends Controller
      */
     public function redirectToOriginal($hash)
     {
-        // ... your code for redirecting to the original URL ...
+        // Find the ShortUrl record by hash
+        $shortUrl = ShortUrl::where('hash', $hash)->first();
+
+        if (!$shortUrl) {
+            // If no matching short URL is found, you can handle this situation (e.g., show a 404 page)
+            abort(404, 'Short URL not found');
+        }
+
+        // Redirect to the original URL
+        return redirect()->away($shortUrl->original_url);
     }
 }
