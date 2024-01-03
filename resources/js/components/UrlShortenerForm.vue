@@ -64,10 +64,10 @@ export default {
         shortUrl.value = response.data.shortened_url;
         if(response.status == 201){
           // Add the new URL to the urls array
-    urls.value.push({
-      original_url: originalUrl.value,
-      hash: response.data.shortened_url
-    });
+            urls.value.unshift({
+              original_url: originalUrl.value,
+              hash: response.data.shortened_url
+            });
 
         }
         errorMessage.value = null;

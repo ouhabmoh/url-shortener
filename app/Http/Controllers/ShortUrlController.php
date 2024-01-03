@@ -102,7 +102,7 @@ class ShortUrlController extends Controller
      */
     public function index()
     {
-        $urls = ShortUrl::all(); // Get all URLs from the Url model
+        $urls = ShortUrl::orderBy('created_at', 'desc')->get(); // Get all URLs from the Url model
 
         return response()->json($urls); // Return the URLs as a JSON response
     }
