@@ -19,5 +19,6 @@ Route::get('/', function () {
 
 
 
-Route::post('/shorten-url', [ShortUrlController::class, 'createShortUrl']);
+Route::post('/url', [ShortUrlController::class, 'createShortUrl']);
+Route::get('/url', [ShortUrlController::class, 'index']);
 Route::get('/{hash}', [ShortUrlController::class, 'redirectToOriginal']);
